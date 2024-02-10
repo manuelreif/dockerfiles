@@ -1,4 +1,4 @@
-FROM python:3.12-rc-bookworm
+FROM python:3.12-slim-bookworm
 
 WORKDIR /logical
 

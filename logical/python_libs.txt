@@ -1,5 +1,3 @@
 pandas
 ortools
 numpy
-pyexcel_ods3
-openpyxl

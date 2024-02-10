@@ -7,7 +7,6 @@ import pandas as pd
 import numpy as np
 import string
 import os
-from pyexcel_ods3 import save_data
 import json
 
 ##### FUNKTIONEN ZUM ERZEUGEN VON SUMMEN ÜBER DIE BUCHSTABEN DER WÖRTER #####
@@ -87,10 +86,10 @@ def create_letter_matrix(word_sum):
 
 
 
-def solve_logical(word_sum_file = "word_sum_input.xlsx", outfile = "loesung.ods"):
+def solve_logical(word_sum_file = "word_sum_input.csv", outfile = "loesung.csv"):
 
     # word sum - hier sind die wörter plus die summen drinnen!
-    word_pd = pd.read_excel(word_sum_file)
+    word_pd = pd.read_csv(word_sum_file)
     wordsum = word_pd["letter_sum"].tolist()
     letters = list(string.ascii_lowercase)
 
@@ -127,7 +126,7 @@ def solve_logical(word_sum_file = "word_sum_input.xlsx", outfile = "loesung.ods"
     loesung = pd.DataFrame({'Buchstabe': letters, 'value':  res_dat})
 
     data = {"Loesung": [loesung.columns.tolist()] + loesung.values.tolist()}
-    save_data(outfile, data)
+    loesung.to_csv(outfile)
 
     return data
 
